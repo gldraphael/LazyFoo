@@ -1,0 +1,6 @@
+# Ignore generated files
+*.out
+
+# Ignore OS specific files
+.DS_STORE/
+thumbs.db 
