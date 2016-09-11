@@ -1,6 +1,7 @@
 # Ignore generated files
 *.out
 .vscode
+*.plist
 
 # Ignore OS specific files
 .DS_STORE/
