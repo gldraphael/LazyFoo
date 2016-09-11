@@ -1,5 +1,6 @@
 # Ignore generated files
 *.out
+.vscode
 
 # Ignore OS specific files
 .DS_STORE/
