@@ -9,9 +9,9 @@ This repository should help me track my progress of following the SDL2 tutorials
 
 1. Run `xcode-select --install` on the terminal. (I had to run this again after upgrading OSX to El Capitan)
 1. Install [homebrew](http://brew.sh)
-1. Install SDL2 by typing `brew install sdl2`
+1. Install SDL2 by typing: `brew install sdl2 --universal`
 1. Install Visual Studio Code (or any other text editor of your choice)
-1. Done! You should be able to compile a file with SDL2 code using the command: `clang++ filename.cpp -lSDL2 -g`
+1. Done! You should be able to compile SDL2 code with: `clang++ filename.cpp -lSDL2 -g`
 
 ### Using this repo
 
