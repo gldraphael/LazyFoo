@@ -11,14 +11,14 @@ const int SCREEN_WIDTH = 800;
 const int SCREEN_HEIGHT = 374;
 
 // Key press surfaces constants
-enum KeyPressSurfaces
+enum KeyPressSurface
 {
-    KEY_PRESS_SURFACE_DEFAULT,
-    KEY_PRESS_SURFACE_UP,
-    KEY_PRESS_SURFACE_DOWN,
-    KEY_PRESS_SURFACE_LEFT,
-    KEY_PRESS_SURFACE_RIGHT,
-    KEY_PRESS_SURFACE_TOTAL
+    DEFAULT,
+    UP,
+    DOWN,
+    LEFT,
+    RIGHT,
+    TOTAL
 };
 
 /*
@@ -48,7 +48,7 @@ SDL_Window* gWindow = NULL;
 SDL_Surface* gScreenSurface = NULL;
 
 //The images that correspond to a keypress
-SDL_Surface* gKeyPressSurfaces[KEY_PRESS_SURFACE_TOTAL];
+SDL_Surface* gKeyPressSurface[TOTAL];
 
 //Current displayed image
 SDL_Surface* gCurrentSurface = NULL;
@@ -96,36 +96,36 @@ bool init()
 bool loadMedia()
 {
     // Load default surface
-    gKeyPressSurfaces[KEY_PRESS_SURFACE_DEFAULT] = loadSurface("img/prompt.bmp");
-    if (gKeyPressSurfaces[KEY_PRESS_SURFACE_DEFAULT] == NULL)
+    gKeyPressSurface[KeyPressSurface::DEFAULT] = loadSurface("img/prompt.bmp");
+    if (gKeyPressSurface[KeyPressSurface::DEFAULT] == NULL)
     {
         return false;
     }
 
     // Load up surface
-    gKeyPressSurfaces[KEY_PRESS_SURFACE_UP] = loadSurface("img/up.bmp");
-    if (gKeyPressSurfaces[KEY_PRESS_SURFACE_UP] == NULL)
+    gKeyPressSurface[KeyPressSurface::UP] = loadSurface("img/up.bmp");
+    if (gKeyPressSurface[KeyPressSurface::UP] == NULL)
     {
         return false;
     }
 
     // Load down surface
-    gKeyPressSurfaces[KEY_PRESS_SURFACE_DOWN] = loadSurface("img/down.bmp");
-    if (gKeyPressSurfaces[KEY_PRESS_SURFACE_DOWN] == NULL)
+    gKeyPressSurface[KeyPressSurface::DOWN] = loadSurface("img/down.bmp");
+    if (gKeyPressSurface[KeyPressSurface::DOWN] == NULL)
     {
         return false;
     }
 
     // Load left surface
-    gKeyPressSurfaces[KEY_PRESS_SURFACE_LEFT] = loadSurface("img/left.bmp");
-    if (gKeyPressSurfaces[KEY_PRESS_SURFACE_LEFT] == NULL)
+    gKeyPressSurface[KeyPressSurface::LEFT] = loadSurface("img/left.bmp");
+    if (gKeyPressSurface[KeyPressSurface::LEFT] == NULL)
     {
         return false;
     }
 
     // Load right surface
-    gKeyPressSurfaces[KEY_PRESS_SURFACE_RIGHT] = loadSurface("img/right.bmp");
-    if (gKeyPressSurfaces[KEY_PRESS_SURFACE_RIGHT] == NULL)
+    gKeyPressSurface[KeyPressSurface::RIGHT] = loadSurface("img/right.bmp");
+    if (gKeyPressSurface[KeyPressSurface::RIGHT] == NULL)
     {
         return false;
     }
@@ -148,10 +148,10 @@ SDL_Surface* loadSurface(std::string path)
 void close()
 {
     // Deallocate surfaces
-    for(int i = 0; i < KEY_PRESS_SURFACE_TOTAL; i++)
+    for(int i = 0; i < KeyPressSurface::TOTAL; i++)
     {
-        SDL_FreeSurface(gKeyPressSurfaces[i]);
-        gKeyPressSurfaces[i] = NULL;
+        SDL_FreeSurface(gKeyPressSurface[i]);
+        gKeyPressSurface[i] = NULL;
     }
 
     //Destroy window
@@ -184,7 +184,7 @@ int main(int argc, char* args[])
         return -1;
     }
 
-    gCurrentSurface = gKeyPressSurfaces[KEY_PRESS_SURFACE_DEFAULT];
+    gCurrentSurface = gKeyPressSurface[KeyPressSurface::DEFAULT];
     
     while(!quit)
     {
@@ -202,23 +202,23 @@ int main(int argc, char* args[])
                 switch(e.key.keysym.sym)
                 {
                     case SDLK_UP:
-                        gCurrentSurface = gKeyPressSurfaces[KEY_PRESS_SURFACE_UP];
+                        gCurrentSurface = gKeyPressSurface[KeyPressSurface::UP];
                         break;
 
                     case SDLK_DOWN:
-                        gCurrentSurface = gKeyPressSurfaces[KEY_PRESS_SURFACE_DOWN];
+                        gCurrentSurface = gKeyPressSurface[KeyPressSurface::DOWN];
                         break;
 
                     case SDLK_LEFT:
-                        gCurrentSurface = gKeyPressSurfaces[KEY_PRESS_SURFACE_LEFT];
+                        gCurrentSurface = gKeyPressSurface[KeyPressSurface::LEFT];
                         break;
 
                     case SDLK_RIGHT:
-                        gCurrentSurface = gKeyPressSurfaces[KEY_PRESS_SURFACE_RIGHT];
+                        gCurrentSurface = gKeyPressSurface[KeyPressSurface::RIGHT];
                         break;
 
                     default:
-                        gCurrentSurface = gKeyPressSurfaces[KEY_PRESS_SURFACE_DEFAULT];
+                        gCurrentSurface = gKeyPressSurface[KeyPressSurface::DEFAULT];
                         break;
                 }
             }
