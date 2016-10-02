@@ -9,7 +9,7 @@
 
 //Screen dimension constants
 const int SCREEN_WIDTH = 800;
-const int SCREEN_HEIGHT = 600;
+const int SCREEN_HEIGHT = 374;
 SDL_Rect stretchRect = { 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT}; // x, y, width, height
 
 /*
@@ -106,10 +106,10 @@ bool loadMedia()
     bool success = true;
 
     //Load splash image
-    gHelloWorld = loadSurface("image.bmp");
+    gHelloWorld = loadSurface("image.png");
     if(gHelloWorld == NULL)
     {
-        printf("Unable to load image %s! SDL Error: %s\n", "image.bmp", SDL_GetError());
+        printf("Unable to load image %s! SDL Error: %s\n", "image.png", SDL_GetError());
         success = false;
     }
 
